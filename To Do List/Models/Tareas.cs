@@ -24,6 +24,5 @@ namespace To_Do_List.Models
         [NotNull]
         public string Prioridad { get; set; }
 
-        DateTime dtToday = DateTime.Now;
     }
 }
