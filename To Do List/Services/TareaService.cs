@@ -21,6 +21,12 @@ namespace To_Do_List.Services
 
             dbConnection.CreateTable<Tareas>();
 
+            Tareas tarea = new Tareas();
+            tarea.Nombre = "Test 1";
+            tarea.Estado = "Incompleta";
+            tarea.Prioridad = "1";
+            this.Insert(tarea);
+
         }
 
         public List<Tareas> GetAll()

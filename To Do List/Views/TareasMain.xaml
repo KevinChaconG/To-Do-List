@@ -4,6 +4,7 @@
              x:Class="To_Do_List.Views.TareasMain"
              xmlns:viewModel="clr-namespace:To_Do_List.ViewModels"
              x:DataType="viewModel:TareasMainViewModel"
+             xmlns:model="clr-namespace:To_Do_List.Models"
              Title="TareasMain">
 
     <ContentPage.Content>
@@ -17,17 +18,19 @@
             <!-- Lista de tareas -->
             <CollectionView ItemsSource="{Binding TareasCollection}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="model:Tareas">
                         <StackLayout Padding="10" Orientation="Horizontal">
                             <!-- Nombre de la tarea -->
-                            <!-- <Label Text="{Binding Nombre}" FontSize="Medium" VerticalOptions="Center" /> -->
+                            <Label Text="{Binding Nombre}" FontSize="Medium" VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:TareasMainViewModel}}, Path=SelectTareaCommand}" CommandParameter="{Binding .}"/>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
             <Button Text="Agregar tarea" Command="{Binding goToAddTareaFormCommand}"/>
-
 
         </VerticalStackLayout>
     </ContentPage.Content>
