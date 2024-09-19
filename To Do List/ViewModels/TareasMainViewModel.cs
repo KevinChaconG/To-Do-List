@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using To_Do_List.Models;
 using To_Do_List.Services;
+using To_Do_List.Views;
 
 namespace To_Do_List.ViewModels
 {
@@ -54,7 +55,7 @@ namespace To_Do_List.ViewModels
 
                 if (res == actualizar)
                 {
-                    await App.Current!.MainPage!.DisplayActionSheet("Opciones", "Cancelar", null, actualizar, eliminar);
+                    await App.Current.MainPage.Navigation.PushAsync(new AddTareaForm(tareas));
                 }
                 else if(res == eliminar)
                 {
