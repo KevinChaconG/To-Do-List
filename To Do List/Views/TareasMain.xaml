@@ -5,11 +5,6 @@
              xmlns:viewmodels="clr-namespace:To_Do_List.ViewModels"
              Title="TareasMain">
 
-    <!-- Configura el ViewModel como el contexto de datos -->
-    <ContentPage.BindingContext>
-        <viewmodels:TareasMainViewModel />
-    </ContentPage.BindingContext>
-
     <ContentPage.Content>
 
         <VerticalStackLayout>
@@ -25,9 +20,6 @@
                         <StackLayout Padding="10" Orientation="Horizontal">
                             <!-- Nombre de la tarea -->
                             <Label Text="{Binding Nombre}" FontSize="Medium" VerticalOptions="Center" />
-
-                            <!-- Checkbox para indicar si la tarea está completada -->
-                            <CheckBox IsChecked="{Binding Completada}" VerticalOptions="Center" />
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

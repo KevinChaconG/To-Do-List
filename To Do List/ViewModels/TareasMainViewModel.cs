@@ -15,17 +15,12 @@ namespace To_Do_List.ViewModels
     public partial class TareasMainViewModel:ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<Tareas> _tareasCollection;
+        private ObservableCollection<Tareas> _tareasCollection = new ObservableCollection<Tareas>();
 
         private readonly TareaService TareaService;
 
         public TareasMainViewModel()
         {
-            _tareasCollection = new ObservableCollection<Tareas>()
-            {
-                new Tareas{ Nombre = "Tarea 1" },
-                new Tareas{ Nombre = "Tarea 2" }
-            };
             TareaService = new TareaService();
         }
 
@@ -49,7 +44,7 @@ namespace To_Do_List.ViewModels
         }
 
         [RelayCommand]
-        private async Task SelectTareas(Tareas tareas)
+        private async Task SelectTarea(Tareas tareas)
         {
             try
             {
@@ -87,39 +82,6 @@ namespace To_Do_List.ViewModels
         private async Task goToAddTareaForm()
         {
             await App.Current!.MainPage!.Navigation.PushAsync(new AddTareaForm());
-        }
-
-        [RelayCommand]
-        private async Task SelectTarea(Tareas tarea)
-        {
-            try
-            {
-                string actualizar = "Actualizar";
-                string eliminar = "Eliminar";
-
-                string res = await App.Current!.MainPage!.DisplayActionSheet("OPCIONES", "Cancelar", null, actualizar, eliminar);
-                if (res == actualizar)
-                {
-                    await App.Current.MainPage.Navigation.PushAsync(new AddTareaForm(tarea));
-                }else if(res == eliminar)
-                {
-                    bool respuesta = await App.Current!.MainPage!.DisplayAlert("ELIMINAR TAREA", "¿Desa eliminar la tarea?", "Si", "No");
-
-                    if (respuesta)
-                    {
-                        int del = TareaService.Delete(tarea);
-                        if (del > 0)
-                        {
-                            TareasCollection.Remove(tarea);
-                        }
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Alerta("ERROR", ex.Message);
-            }
         }
 
     }
