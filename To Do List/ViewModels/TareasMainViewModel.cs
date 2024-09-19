@@ -15,12 +15,17 @@ namespace To_Do_List.ViewModels
     public partial class TareasMainViewModel:ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<Tareas> tareasCollection = new ObservableCollection<Tareas>();
+        private ObservableCollection<Tareas> _tareasCollection;
 
         private readonly TareaService TareaService;
 
         public TareasMainViewModel()
         {
+            _tareasCollection = new ObservableCollection<Tareas>()
+            {
+                new Tareas{ Nombre = "Tarea 1" },
+                new Tareas{ Nombre = "Tarea 2" }
+            };
             TareaService = new TareaService();
         }
 
@@ -35,10 +40,10 @@ namespace To_Do_List.ViewModels
 
             if(getAll.Count > 0)
             {
-                tareasCollection.Clear();
+                _tareasCollection.Clear();
                 foreach (var tarea in getAll)
                 {
-                    tareasCollection.Add(tarea);
+                    _tareasCollection.Add(tarea);
                 }
             }
         }
@@ -67,7 +72,7 @@ namespace To_Do_List.ViewModels
 
                         if(del > 0)
                         {
-                            tareasCollection.Remove(tareas);
+                            _tareasCollection.Remove(tareas);
                         }
                     }
                 }
