@@ -12,7 +12,7 @@ using To_Do_List.Views;
 
 namespace To_Do_List.ViewModels
 {
-    public partial class TareasMainViewModel
+    public partial class TareasMainViewModel:ObservableObject
     {
         [ObservableProperty]
         private ObservableCollection<Tareas> tareasCollection = new ObservableCollection<Tareas>();
