@@ -10,7 +10,7 @@
     <ContentPage.Content>
 
         <VerticalStackLayout>
-            <Grid Margin="5,5,5,5" RowDefinitions="Auto" ColumnDefinitions="1*,1*,1*,1*" >
+            <Grid Margin="10,10,10,10" RowDefinitions="Auto" ColumnDefinitions="1*,2*,1*,1*" >
                 <Label Text="Nombre" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" />
                 <Label Text="Descripción" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="1" />
                 <Label Text="Estado" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="2" />
@@ -21,29 +21,22 @@
             <CollectionView ItemsSource="{Binding TareasCollection}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Tareas">
-                        <StackLayout Padding="10" Orientation="Horizontal">
-                            <!-- Nombre de la tarea -->
-                            <Grid Margin="5,5,5,5" RowDefinitions="Auto" ColumnDefinitions="1*,1*,1*,1*" >
-                                <Label Text="{Binding Nombre}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Padding="5,0"/>
-                                <Label Text="{Binding Descripcion}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="1" Padding="5,0" />
-                                <Label Text="{Binding Estado}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="2" Padding="5,0"/>
-                                <Label Text="{Binding Prioridad}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="3" Padding="5,0"/>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:TareasMainViewModel}}, Path=SelectTareaCommand}" CommandParameter="{Binding .}" />
-                                </StackLayout.GestureRecognizers>
-                            </Grid>
-
-
-                        </StackLayout>
+                        <!-- Nombre de la tarea -->
+                        <Grid Padding="10" RowDefinitions="Auto" ColumnDefinitions="1*,2*,1*,1*" >
+                            <Label Text="{Binding Nombre}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" />
+                            <Label Text="{Binding Descripcion}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+                            <Label Text="{Binding Estado}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="2" />
+                            <Label Text="{Binding Prioridad}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="3" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:TareasMainViewModel}}, Path=SelectTareaCommand}" CommandParameter="{Binding .}" />
+                            </StackLayout.GestureRecognizers>
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Text="Agregar tarea" Command="{Binding goToAddTareaFormCommand}"/>
+            <Button Text="Agregar tarea" Command="{Binding goToAddTareaFormCommand}" BackgroundColor="Green" Margin="5"/>
 
         </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>
-
-<!--<Label Text="{Binding Nombre}" FontSize="Medium" VerticalOptions="Center" />
-<Label Text="{Binding Descripcion}" FontSize="Medium" VerticalOptions="Center" />-->
