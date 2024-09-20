@@ -5,12 +5,10 @@
              xmlns:viewModel="clr-namespace:To_Do_List.ViewModels"
              x:DataType="viewModel:AddTareaFormViewModel"
              Title="Agregar Tarea">
+    
     <VerticalStackLayout Padding="30,0, 30,0" Spacing="5" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
         <Label Text="Nombre de Tarea"/>
         <Entry Text="{Binding Nombre}" Keyboard="Text" Placeholder="Ingrese la tarea"/>
-
-        <Label Text="Descripcion"/>
-        <Entry Text="{Binding Descripcion}" Keyboard="Text" Placeholder="Descripcion"/>
 
         <Label Text="Estado"/>
         <Picker Title="Seleccionar Estado" ItemsSource="{Binding Estados}" SelectedItem="{Binding Estado}" />

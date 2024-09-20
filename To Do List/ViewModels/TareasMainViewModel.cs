@@ -48,7 +48,7 @@ namespace To_Do_List.ViewModels
         {
             try
             {
-                string actualizar = "Actualizar";
+                string actualizar = "Editar";
                 string eliminar = "Eliminar";
 
                 string res = await App.Current!.MainPage!.DisplayActionSheet("Opciones", "Cancelar", null, actualizar, eliminar);

@@ -104,12 +104,22 @@ namespace To_Do_List.ViewModels
 
         private bool Validar(Tareas Tareas)
         {
-            if(Tareas.Nombre == null || Tareas.Nombre == "")
+            if (Tareas.Nombre == null || Tareas.Nombre == "")
             {
                 Alerta("Advertencia", "Ingrese el nombre de la tarea");
                 return false;
-            } else
+            }
+            else if (Tareas.Estado == null || Tareas.Estado == "")
             {
+                Alerta("Advertencia", "Ingrese el estado inicial de la tarea");
+                return false;
+            }
+            else if (Tareas.Prioridad == null || Tareas.Prioridad == "")
+            {
+                Alerta("Advertencia", "Ingrese la prioridad de esta tarea");
+                return false;
+            }
+                {
                 return true;
             }
         }
