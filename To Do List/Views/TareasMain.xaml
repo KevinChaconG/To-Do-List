@@ -26,6 +26,11 @@
                                 <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:TareasMainViewModel}}, Path=SelectTareaCommand}" CommandParameter="{Binding .}"/>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
+                        
+                        
+                        
+                        
+                        
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
