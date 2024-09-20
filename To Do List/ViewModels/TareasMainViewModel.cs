@@ -14,11 +14,11 @@ namespace To_Do_List.ViewModels
 {
     public partial class TareasMainViewModel:ObservableObject
     {
+
         [ObservableProperty]
         private ObservableCollection<Tareas> _tareasCollection = new ObservableCollection<Tareas>();
 
         private readonly TareaService TareaService;
-
         public TareasMainViewModel()
         {
             TareaService = new TareaService();

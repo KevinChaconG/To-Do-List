@@ -18,10 +18,8 @@ namespace To_Do_List.Models
 
         public string Descripcion { get; set; }
 
-        [NotNull]
         public string Estado { get; set; }
 
-        [NotNull]
         public string Prioridad { get; set; }
 
     }

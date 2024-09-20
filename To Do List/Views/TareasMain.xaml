@@ -5,32 +5,36 @@
              xmlns:viewModel="clr-namespace:To_Do_List.ViewModels"
              x:DataType="viewModel:TareasMainViewModel"
              xmlns:model="clr-namespace:To_Do_List.Models"
-             Title="TareasMain">
+             Title="Lista de Tareas">
 
     <ContentPage.Content>
 
         <VerticalStackLayout>
-            <Label 
-                Text="Lista de tareas"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+            <Grid Margin="5,5,5,5" RowDefinitions="Auto" ColumnDefinitions="1*,1*,1*,1*" >
+                <Label Text="Nombre" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" />
+                <Label Text="Descripción" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="1" />
+                <Label Text="Estado" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="2" />
+                <Label Text="Prioridad" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="3" />
+            </Grid>
         
             <!-- Lista de tareas -->
-            <CollectionView ItemsSource="{Binding TareasCollection}">
+            <CollectionView ItemsSource="{Binding TareasCollection}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Tareas">
                         <StackLayout Padding="10" Orientation="Horizontal">
                             <!-- Nombre de la tarea -->
-                            <Label Text="{Binding Nombre}" FontSize="Medium" VerticalOptions="Center" />
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:TareasMainViewModel}}, Path=SelectTareaCommand}" CommandParameter="{Binding .}"/>
-                            </StackLayout.GestureRecognizers>
+                            <Grid Margin="5,5,5,5" RowDefinitions="Auto" ColumnDefinitions="1*,1*,1*,1*" >
+                                <Label Text="{Binding Nombre}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Padding="5,0"/>
+                                <Label Text="{Binding Descripcion}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="1" Padding="5,0" />
+                                <Label Text="{Binding Estado}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="2" Padding="5,0"/>
+                                <Label Text="{Binding Prioridad}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="3" Padding="5,0"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:TareasMainViewModel}}, Path=SelectTareaCommand}" CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
+                            </Grid>
+
+
                         </StackLayout>
-                        
-                        
-                        
-                        
-                        
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
@@ -40,3 +44,6 @@
         </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>
+
+<!--<Label Text="{Binding Nombre}" FontSize="Medium" VerticalOptions="Center" />
+<Label Text="{Binding Descripcion}" FontSize="Medium" VerticalOptions="Center" />-->

@@ -13,10 +13,12 @@
         <Entry Text="{Binding Descripcion}" Keyboard="Text" Placeholder="Descripcion"/>
 
         <Label Text="Estado"/>
-        <Entry Text="{Binding Estado}" Keyboard="Text" Placeholder="Estado"/>
+        <Picker Title="Seleccionar Estado" ItemsSource="{Binding Estados}" SelectedItem="{Binding Estado}" />
 
         <Label Text="Prioridad"/>
-        <Entry Text="{Binding Prioridad}" Keyboard="Text" Placeholder="Prioridad"/>
+        <Picker Title="Seleccionar Prioridad" ItemsSource="{Binding Prioridades}" SelectedItem="{Binding Prioridad}" />
+
+
 
         <Button Text="Guardar" Command="{Binding AddUpdateCommand}"/>
     </VerticalStackLayout>

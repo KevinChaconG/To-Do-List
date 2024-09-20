@@ -29,9 +29,27 @@ namespace To_Do_List.ViewModels
 
         private readonly TareaService TareaService;
 
+        public List<string> Estados { get; } = new List<string>
+        {
+            "Pendiente", "En Proceso", "Completado"
+        };
+
+        public List<string> Prioridades { get; } = new List<string>
+        {
+            "Alta", "Media", "Baja"
+        };
+
+        [ObservableProperty]
+        private string estadoSeleccionado;
+
+        [ObservableProperty]
+        private string prioridadSeleccionada;
+
         public AddTareaFormViewModel()
         {
             TareaService = new TareaService();
+            estadoSeleccionado = "Pendiente";
+            prioridadSeleccionada = "Baja";
         }
 
         public AddTareaFormViewModel(Tareas Tareas)
